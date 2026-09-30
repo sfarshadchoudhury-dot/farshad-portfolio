@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farshad | Computer Science student and software developer</title>
+<meta name="description" content="Portfolio of Farshad, a Computer Science student at Brunel University London seeking a 12-month industrial placement from September 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EDF1F6;
+    --surface: #F8FAFC;
+    --ink: #14213D;
+    --slate: #55637A;
+    --line: #CBD5E1;
+    --cobalt: #2446E8;
+    --cobalt-soft: #DCE3FF;
+    --mint: #BDEBD3;
+    --mint-ink: #0F5132;
+    --amber: #FCE2A8;
+    --amber-ink: #6B4700;
+
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+    --radius: 10px;
+    --wrap: 1080px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img, svg { max-width: 100%; }
+  :focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { width: min(var(--wrap), 100% - 2.5rem); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header.site {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(237, 241, 246, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.site .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .brand { font-family: var(--display); font-weight: 800; font-size: 1.25rem; text-decoration: none; letter-spacing: -0.01em; }
+  nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+  nav a { text-decoration: none; font-weight: 500; font-size: 0.95rem; color: var(--slate); padding: 0.25rem 0; border-bottom: 2px solid transparent; }
+  nav a:hover { color: var(--ink); border-bottom-color: var(--cobalt); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(3rem, 9vw, 7rem) 0 clamp(3rem, 7vw, 5rem); }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .status {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--mint); color: var(--mint-ink);
+    padding: 0.35rem 0.85rem; border-radius: 999px;
+    font-size: 0.9rem; font-weight: 500; margin-bottom: 1.5rem;
+  }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mint-ink); }
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.25rem;
+  }
+  .lede { font-size: 1.2rem; color: var(--slate); max-width: 34rem; margin: 0 0 2rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-block; text-decoration: none;
+    font-weight: 600; font-size: 1rem;
+    padding: 0.8rem 1.4rem; border-radius: var(--radius);
+    border: 2px solid var(--ink);
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--cobalt); border-color: var(--cobalt); }
+  .btn.ghost:hover { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Two Sum widget ---------- */
+  .lab {
+    background: var(--surface);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 1.4rem;
+    box-shadow: 8px 8px 0 var(--cobalt);
+  }
+  .lab h2 { font-family: var(--display); font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
+  .lab p.sub { margin: 0 0 1rem; font-size: 0.95rem; color: var(--slate); }
+  .lab .fields { display: grid; grid-template-columns: 1fr 5.5rem; gap: 0.75rem; margin-bottom: 1rem; }
+  .lab label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .lab input {
+    width: 100%; font: 500 1rem var(--mono);
+    padding: 0.55rem 0.7rem; border: 1.5px solid var(--line); border-radius: 8px;
+    background: #fff; color: var(--ink);
+  }
+  .cells { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.9rem; min-height: 2.6rem; }
+  .cell {
+    font-family: var(--mono); font-weight: 500;
+    min-width: 2.6rem; text-align: center;
+    padding: 0.45rem 0.6rem; border-radius: 8px;
+    border: 1.5px solid var(--line); background: #fff;
+  }
+  .cell.current { border-color: var(--cobalt); background: var(--cobalt-soft); }
+  .cell.match { border-color: var(--mint-ink); background: var(--mint); }
+  .map-label { font-size: 0.85rem; font-weight: 600; margin: 0 0 0.35rem; }
+  .map { font-family: var(--mono); font-size: 0.92rem; min-height: 1.6rem; margin-bottom: 0.9rem; color: var(--ink); word-break: break-word; }
+  .map span { display: inline-block; background: var(--paper); border-radius: 6px; padding: 0.1rem 0.5rem; margin: 0 0.3rem 0.3rem 0; }
+  .msg { min-height: 3.2rem; font-size: 0.95rem; margin: 0 0 1rem; }
+  .msg strong { color: var(--mint-ink); }
+  .lab .row { display: flex; gap: 0.6rem; }
+  .lab button {
+    font: 600 0.95rem var(--body); cursor: pointer;
+    padding: 0.6rem 1.1rem; border-radius: 8px; border: 2px solid var(--ink);
+    background: var(--ink); color: var(--paper);
+  }
+  .lab button.alt { background: transparent; color: var(--ink); }
+  .lab button:hover { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+  .lab button:disabled { opacity: 0.45; cursor: not-allowed; background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+  /* ---------- Sections ---------- */
+  section.block { padding: clamp(3rem, 7vw, 5rem) 0; border-top: 1px solid var(--line); }
+  h2.title { font-family: var(--display); font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.6rem); letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 2.5rem; }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); }
+  .about p { margin: 0 0 1rem; max-width: 34rem; }
+  .facts { margin: 0; display: grid; gap: 1.1rem; align-content: start; }
+  .facts div { border-left: 4px solid var(--cobalt); padding-left: 1rem; }
+  .facts dt { font-size: 0.9rem; color: var(--slate); font-weight: 500; }
+  .facts dd { margin: 0; font-weight: 600; }
+
+  /* Projects */
+  .featured {
+    background: var(--ink); color: var(--paper);
+    border-radius: 16px; padding: clamp(1.5rem, 4vw, 2.5rem);
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .featured h3 { font-family: var(--display); font-size: clamp(1.6rem, 3.4vw, 2.2rem); line-height: 1.1; letter-spacing: -0.02em; margin: 0.75rem 0 0.9rem; }
+  .featured p { margin: 0 0 1rem; color: #D5DCEA; max-width: 34rem; }
+  .featured ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.7rem; align-content: center; }
+  .featured li { border-top: 1px solid rgba(255,255,255,0.22); padding-top: 0.7rem; }
+  .featured li b { display: block; font-family: var(--display); font-size: 1.6rem; line-height: 1; margin-bottom: 0.15rem; }
+  .featured li span { font-size: 0.92rem; color: #C3CCDF; }
+  .tag { display: inline-block; font-size: 0.82rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 999px; }
+  .tag.done { background: var(--mint); color: var(--mint-ink); }
+  .tag.wip { background: var(--amber); color: var(--amber-ink); }
+  .stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.1rem 0 0; padding: 0; list-style: none; }
+  .stack li { font-family: var(--mono); font-size: 0.82rem; padding: 0.2rem 0.6rem; border-radius: 6px; background: var(--cobalt-soft); color: var(--ink); }
+  .featured .stack li { background: rgba(255,255,255,0.12); color: var(--paper); }
+
+  .rows { border-top: 2px solid var(--ink); }
+  .row-item {
+    display: grid; grid-template-columns: 14rem 1fr auto; gap: 1.5rem; align-items: start;
+    padding: 1.6rem 0; border-bottom: 1px solid var(--line);
+  }
+  .row-item h3 { font-family: var(--display); font-size: 1.4rem; line-height: 1.15; margin: 0 0 0.5rem; letter-spacing: -0.01em; }
+  .row-item p { margin: 0; max-width: 38rem; }
+  .row-item .stack { margin-top: 0.8rem; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .skills h3 { font-family: var(--display); font-size: 1.2rem; margin: 0 0 0.6rem; }
+  .skills ul { list-style: none; margin: 0; padding: 0; }
+  .skills li { padding: 0.45rem 0; border-bottom: 1px solid var(--line); }
+  .skills li small { color: var(--slate); }
+
+  /* Timeline (a real sequence) */
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 3px solid var(--ink); }
+  .timeline li { position: relative; padding: 0 0 1.8rem 1.6rem; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -9px; top: 0.45rem;
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--paper); border: 3px solid var(--cobalt);
+  }
+  .timeline li.next::before { background: var(--cobalt); }
+  .timeline time { font-size: 0.9rem; color: var(--slate); font-weight: 500; }
+  .timeline h3 { font-family: var(--display); font-size: 1.25rem; margin: 0.1rem 0 0.2rem; }
+  .timeline p { margin: 0; max-width: 38rem; }
+
+  /* Contact */
+  .contact { text-align: left; }
+  .contact p { font-size: 1.2rem; max-width: 34rem; margin: 0 0 1.75rem; color: var(--slate); }
+  .links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  footer.site { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--slate); font-size: 0.92rem; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .hero .wrap, .about, .featured { grid-template-columns: 1fr; }
+    .skills { grid-template-columns: 1fr; gap: 1.5rem; }
+    .row-item { grid-template-columns: 1fr; gap: 0.6rem; }
+  }
+  @media (max-width: 560px) {
+    nav ul { gap: 1rem; }
+    nav a { font-size: 0.88rem; }
+    .lab { box-shadow: 5px 5px 0 var(--cobalt); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">Farshad</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="status">Open to a 12-month placement from September 2027</p>
+        <h1>I build software and solve problems in Java.</h1>
+        <p class="lede">I'm Farshad, a first-year Computer Science student at Brunel University London. I'm looking for an industrial placement where I can ship real code alongside experienced engineers.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- Interactive: Two Sum with a hash map -->
+      <div class="lab" aria-labelledby="lab-title">
+        <h2 id="lab-title">Try it: Two Sum</h2>
+        <p class="sub">Step through the hash map solution I practised on LeetCode.</p>
+        <div class="fields">
+          <div>
+            <label for="nums">Numbers</label>
+            <input id="nums" type="text" value="2, 7, 11, 15" inputmode="numeric" autocomplete="off">
+          </div>
+          <div>
+            <label for="target">Target</label>
+            <input id="target" type="text" value="9" inputmode="numeric" autocomplete="off">
+          </div>
+        </div>
+        <div class="cells" id="cells" aria-label="Array"></div>
+        <p class="map-label">Seen so far (value : index)</p>
+        <div class="map" id="map"></div>
+        <p class="msg" id="msg" role="status" aria-live="polite">Press "Next step" to start.</p>
+        <div class="row">
+          <button type="button" id="step">Next step</button>
+          <button type="button" class="alt" id="reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="block" id="about">
+    <div class="wrap about">
+      <div>
+        <h2 class="title">About me</h2>
+        <p>I study Computer Science at Brunel University London and spend most of my spare time writing Java, working through LeetCode problems and building projects that go beyond coursework.</p>
+        <p>I like software that is tested, structured and easy to change. My Orders Management System project taught me how much that matters, and I'm now extending my skills into Python and machine learning.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Studying</dt><dd>BSc Computer Science, Brunel University London</dd></div>
+        <div><dt>Looking for</dt><dd>12-month industrial placement, September 2027</dd></div>
+        <div><dt>Main language</dt><dd>Java, with Python in progress</dd></div>
+        <div><dt>Based in</dt><dd>London, UK</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="block" id="projects">
+    <div class="wrap">
+      <h2 class="title">Projects</h2>
+
+      <article class="featured">
+        <div>
+          <span class="tag done">Completed</span>
+          <h3>Orders Management System</h3>
+          <p>A desktop application for managing customers, products and orders. I designed and built it on my own using the MVC pattern, with a SQLite database behind a JavaFX interface and a full unit test suite.</p>
+          <ul class="stack" aria-label="Technologies">
+            <li>Java</li><li>JavaFX 21</li><li>SQLite</li><li>Maven</li><li>JUnit 5</li>
+          </ul>
+        </div>
+        <ul aria-label="Project highlights">
+          <li><b>25</b><span>JUnit 5 tests covering core logic</span></li>
+          <li><b>MVC</b><span>Clear split between data, views and controllers</span></li>
+          <li><b>Solo</b><span>Designed, built and documented by me</span></li>
+        </ul>
+      </article>
+
+      <div class="rows">
+        <article class="row-item">
+          <div><span class="tag wip">In progress</span></div>
+          <div>
+            <h3>Credit card fraud detection</h3>
+            <p>A machine learning project that flags fraudulent card transactions. I'm using it to learn the Python data stack properly: cleaning and exploring the data, then training and evaluating classification models.</p>
+            <ul class="stack" aria-label="Technologies"><li>Python</li><li>pandas</li><li>scikit-learn</li></ul>
+          </div>
+          <span></span>
+        </article>
+
+        <article class="row-item">
+          <div><span class="tag wip">Ongoing</span></div>
+          <div>
+            <h3>Java problem-solving log</h3>
+            <p>Regular LeetCode practice in Java, including Two Sum, Best Time to Buy and Sell Stock, and Longest Substring Without Repeating Characters. I focus on hash maps and sliding windows, and I'm working through the NeetCode 150 list.</p>
+            <ul class="stack" aria-label="Technologies"><li>Java</li><li>Hash maps</li><li>Sliding window</li></ul>
+          </div>
+          <span></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="block" id="skills">
+    <div class="wrap">
+      <h2 class="title">Skills</h2>
+      <div class="skills">
+        <div>
+          <h3>Working knowledge</h3>
+          <ul>
+            <li>Java <small>(beginner to intermediate)</small></li>
+            <li>Object-oriented programming</li>
+            <li>SQL and SQLite</li>
+            <li>JDBC</li>
+            <li>Unit testing with JUnit 5</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul>
+            <li>JavaFX</li>
+            <li>Maven</li>
+            <li>Git</li>
+            <li>LeetCode</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Learning now</h3>
+          <ul>
+            <li>Python</li>
+            <li>pandas</li>
+            <li>scikit-learn</li>
+            <li>Data structures and algorithms</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey (a genuine sequence) -->
+  <section class="block" id="journey">
+    <div class="wrap">
+      <h2 class="title">Journey to placement</h2>
+      <ol class="timeline">
+        <li>
+          <time datetime="2025">Now</time>
+          <h3>First year, Computer Science</h3>
+          <p>Building a foundation in Java, databases and software design at Brunel University London.</p>
+        </li>
+        <li>
+          <time>Summer</time>
+          <h3>Portfolio and skills</h3>
+          <p>Finishing the fraud detection project, adding Python to my toolkit and keeping up daily problem-solving practice.</p>
+        </li>
+        <li class="next">
+          <time datetime="2027-09">September 2027</time>
+          <h3>12-month industrial placement</h3>
+          <p>Ready to start, and keen to join a team building products at scale.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <h2 class="title">Let's talk</h2>
+      <p>I'm happy to hear about placements, projects or advice. Email is the quickest way to reach me.</p>
+      <div class="links">
+        <a class="btn primary" href="mailto:your.email@example.com">Email me</a>
+        <a class="btn ghost" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">&copy; <span id="year">2026</span> Farshad. Built with plain HTML, CSS and JavaScript.</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Two Sum step-through
+  (function () {
+    var numsEl = document.getElementById('nums');
+    var targetEl = document.getElementById('target');
+    var cellsEl = document.getElementById('cells');
+    var mapEl = document.getElementById('map');
+    var msgEl = document.getElementById('msg');
+    var stepBtn = document.getElementById('step');
+    var resetBtn = document.getElementById('reset');
+
+    var arr, target, i, seen, done;
+
+    function parse() {
+      arr = numsEl.value.split(',').map(function (s) { return s.trim(); })
+        .filter(function (s) { return s !== ''; }).map(Number);
+      target = Number(targetEl.value);
+      var bad = arr.some(isNaN) || isNaN(target) || targetEl.value.trim() === '';
+      return !bad && arr.length > 1 && arr.length <= 12;
+    }
+
+    function render(matchA, matchB) {
+      cellsEl.innerHTML = '';
+      arr.forEach(function (n, idx) {
+        var c = document.createElement('span');
+        c.className = 'cell';
+        if (idx === matchA || idx === matchB) c.className += ' match';
+        else if (idx === i && !done) c.className += ' current';
+        c.textContent = n;
+        cellsEl.appendChild(c);
+      });
+      mapEl.innerHTML = '';
+      Object.keys(seen).forEach(function (k) {
+        var s = document.createElement('span');
+        s.textContent = k + ' : ' + seen[k];
+        mapEl.appendChild(s);
+      });
+    }
+
+    function reset() {
+      seen = {}; i = 0; done = false;
+      if (!parse()) {
+        arr = []; render();
+        msgEl.textContent = 'Enter 2 to 12 numbers separated by commas, and a number for the target.';
+        stepBtn.disabled = true;
+        return;
+      }
+      stepBtn.disabled = false;
+      render();
+      msgEl.textContent = 'Find two numbers that add up to ' + target + '. Press "Next step" to start.';
+    }
+
+    function step() {
+      if (done || i >= arr.length) return;
+      var n = arr[i];
+      var need = target - n;
+      if (Object.prototype.hasOwnProperty.call(seen, need)) {
+        done = true;
+        render(seen[need], i);
+        msgEl.innerHTML = '<strong>Match found.</strong> ' + n + ' needs ' + need + ', which is already at index ' + seen[need] + '. Answer: [' + seen[need] + ', ' + i + '].';
+        stepBtn.disabled = true;
+        return;
+      }
+      seen[n] = i;
+      msgEl.textContent = 'Checked ' + n + ': it needs ' + need + ', which I haven\u2019t seen yet. Stored ' + n + ' and moved on.';
+      i++;
+      if (i >= arr.length) {
+        done = true;
+        render();
+        msgEl.textContent = 'No pair adds up to ' + target + '. Try different numbers.';
+        stepBtn.disabled = true;
+        return;
+      }
+      render();
+    }
+
+    stepBtn.addEventListener('click', step);
+    resetBtn.addEventListener('click', reset);
+    numsEl.addEventListener('input', reset);
+    targetEl.addEventListener('input', reset);
+    reset();
+  })();
+</script>
+</body>
+</html>
